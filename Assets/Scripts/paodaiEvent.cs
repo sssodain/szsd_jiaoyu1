@@ -8,4 +8,10 @@ public class paodaiEvent : MonoBehaviour {
     {
         ProcessManager.Instance.BoyToPaoDai();
     }
+
+
+    void ResetGame()
+    {
+        ProcessManager.Instance.ResetGame();
+    }
 }

@@ -124,6 +124,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 1
+        functionName: ResetGame
+        data: 
+        objectReferenceParameter: {fileID: 100026, guid: bca611326955a6c47a0d10368cd90360,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

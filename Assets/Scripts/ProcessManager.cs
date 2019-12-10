@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class ProcessManager : MonoBehaviour
 {
@@ -116,6 +117,10 @@ public class ProcessManager : MonoBehaviour
         boyroot.SetParent(boytodai);
     }
 
+    public void ResetGame()
+    {
+        SceneManager.LoadScene("Main");
+    }
 
 
 

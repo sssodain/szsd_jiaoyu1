@@ -42,12 +42,12 @@ public class YinFuManager : MonoBehaviour
     }
 
 
-    private void Start()
+    public void Start()
     {
-        CheckGenerate();
+        //CheckGenerate();
     }
 
-    private void CheckGenerate()
+    public void CheckGenerate()
     {
         int curount = CurYinFuList.Count;
         int needCount = MaxCount - curount;

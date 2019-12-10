@@ -92,6 +92,11 @@ public class ProcessManager : MonoBehaviour
         }
     }
 
+    public void StartFlyYinFu()
+    {
+
+    }
+
 
     //public void Update()
     //{

@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject ARRoot;
     public GameObject GameRoot;
+
+    public Transform ARCam;
+    public Transform GameCam;
     private void Awake()
     {
         Instance = this;
@@ -29,8 +32,13 @@ public class GameManager : MonoBehaviour
         {
             ARRoot.SetActive(false);
             GameRoot.SetActive(true);
+            ARCam.position = new Vector3(-2.69f,6.88f,0.93f);
+            ARCam.eulerAngles = GameCam.eulerAngles;
         }
     }
+
+
+
 
 
 }

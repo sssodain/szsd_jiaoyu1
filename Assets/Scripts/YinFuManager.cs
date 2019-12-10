@@ -16,6 +16,8 @@ public class YinFuManager : MonoBehaviour
     public List<Transform> startList = new List<Transform>();
     public Transform flypoint;
     public List<Transform> flyList = new List<Transform>();
+
+    private int MaxCount = 5;
     private void Awake()
     {
         Instance = this;
@@ -42,9 +44,19 @@ public class YinFuManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 5; i++)
+        CheckGenerate();
+    }
+
+    private void CheckGenerate()
+    {
+        int curount = CurYinFuList.Count;
+        int needCount = MaxCount - curount;
+        if (needCount > 0)
         {
-            Generate_yinfu();
+            for (int i = 0; i < needCount; i++)
+            {
+                StartCoroutine(Generate(needCount * 1));
+            }
         }
     }
 
@@ -61,6 +73,12 @@ public class YinFuManager : MonoBehaviour
     }
 
     int yinfuId = 0;
+
+    private IEnumerator Generate(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Generate_yinfu();
+    }
     public void Generate_yinfu()
     {
         GameObject prefab = GetPrefab();
@@ -75,5 +93,13 @@ public class YinFuManager : MonoBehaviour
         CurYinFuList.Add(yinfuitem);
     }
 
+    public void DestroyYinFu(yinfuitem yinfuitem)
+    {
+        int index = CurYinFuList.FindIndex(item => item.yinfuId == yinfuitem.yinfuId);
+        GameObject.DestroyImmediate(yinfuitem.gameObject);
+        CurYinFuList.RemoveAt(index);
+
+        CheckGenerate();
+    }
 
 }

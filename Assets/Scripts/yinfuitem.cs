@@ -41,24 +41,12 @@ public class yinfuitem : MonoBehaviour
                 break;
             }
         }
-
-        //List<Transform> list = YinFuManager.Instance.flyList;
-        //int tmpIndex = Random.Range(0, list.Count);
         return list[flyIndex].localPosition;
     }
-
-
-    private void SetNext()
-    {
-
-
-    }
-
 
     public void StartFly()
     {
         Vector3 vector3 = GetFlyPosition();
-        //Debug.LogError("vector3="+ vector3);
         float time = Random.Range(8f, 15);
         transform.DOLocalMove(vector3, time).OnComplete(delegate() 
         {
@@ -67,17 +55,20 @@ public class yinfuitem : MonoBehaviour
     }
 
 
+    bool IsCanClick = true;
     public void OnClick()
     {
-        Debug.LogError("OnClick");
+        if (!IsCanClick) return;
+        IsCanClick = false;
         transform.DOKill();
         Transform boyTrans = ProcessManager.Instance.boy.transform;
         Vector3 vector3 = Camera.main.WorldToViewportPoint(boyTrans.position);
+        Debug.LogError("OnClick");
         Debug.LogError("vector3=" + vector3);
 
         transform.DOLocalMove(vector3, 10f).OnComplete(delegate ()
         {
-
+            YinFuManager.Instance.DestroyYinFu(this);
         });
     }
 }

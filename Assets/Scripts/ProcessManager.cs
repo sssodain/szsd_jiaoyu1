@@ -99,17 +99,9 @@ public class ProcessManager : MonoBehaviour
         }
     }
 
-    public void StartFlyYinFu()
-    {
-
-    }
-
-
     public void Start_paodai()
     {
         piaodai.gameObject.SetActive(true);
-
-
     }
 
     public void BoyToPaoDai()
@@ -119,11 +111,15 @@ public class ProcessManager : MonoBehaviour
 
     public void ResetGame()
     {
-        SceneManager.LoadScene("Main");
+        //黑屏逻辑
+
+
+        //重新加载场景
+        MyStartCoroutine(2f, delegate ()
+        {
+            SceneManager.LoadScene("Main");
+        });
     }
-
-
-
 
 
     //public void Update()
@@ -135,5 +131,4 @@ public class ProcessManager : MonoBehaviour
     //    if (Input.GetKeyDown(KeyCode.Alpha4)) SwitchBoyAnim("4");
     //    if (Input.GetKeyDown(KeyCode.Alpha5)) SwitchBoyAnim("5");
     //}
-
 }

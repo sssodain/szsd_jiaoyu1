@@ -66,11 +66,15 @@ public class yinfuitem : MonoBehaviour
         //Vector3 vector3 = Camera.main.WorldToViewportPoint(boyTrans.position);
         //Debug.LogError("OnClick");
         //Debug.LogError("vector3=" + vector3);
-
+        //飘过去
         Vector3 vector3 = YinFuManager.Instance.endpoint.localPosition;
         transform.DOLocalMove(vector3, 10f).OnComplete(delegate ()
         {
             YinFuManager.Instance.DestroyYinFu(this);
         });
+
+        //缩小逻辑
+
+
     }
 }

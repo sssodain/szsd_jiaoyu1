@@ -16,7 +16,7 @@ public class YinFuManager : MonoBehaviour
     public List<Transform> startList = new List<Transform>();
     public Transform flypoint;
     public List<Transform> flyList = new List<Transform>();
-
+    public Transform endpoint;
     private int MaxCount = 5;
     private void Awake()
     {

@@ -61,11 +61,12 @@ public class yinfuitem : MonoBehaviour
         if (!IsCanClick) return;
         IsCanClick = false;
         transform.DOKill();
-        Transform boyTrans = ProcessManager.Instance.boy.transform;
-        Vector3 vector3 = Camera.main.WorldToViewportPoint(boyTrans.position);
-        Debug.LogError("OnClick");
-        Debug.LogError("vector3=" + vector3);
+        //Transform boyTrans = ProcessManager.Instance.boy.transform;
+        //Vector3 vector3 = Camera.main.WorldToViewportPoint(boyTrans.position);
+        //Debug.LogError("OnClick");
+        //Debug.LogError("vector3=" + vector3);
 
+        Vector3 vector3 = YinFuManager.Instance.endpoint.localPosition;
         transform.DOLocalMove(vector3, 10f).OnComplete(delegate ()
         {
             YinFuManager.Instance.DestroyYinFu(this);

@@ -11,6 +11,12 @@ public class GameUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        text.gameObject.SetActive(false);
+    }
+
+    public void show()
+    {
+        text.gameObject.SetActive(true);
     }
 
     int curCount = 0;
@@ -19,7 +25,7 @@ public class GameUI : MonoBehaviour
         curCount++;
         if (curCount >= 5)
         {
-            curCount = 0;
+            //curCount = 0;
             ProcessManager.Instance.Start_paodai();
         }
         text.text = "" + curCount + "/" + 5;

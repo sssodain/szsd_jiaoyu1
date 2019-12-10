@@ -100,7 +100,7 @@ public class YinFuManager : MonoBehaviour
         GameObject.DestroyImmediate(yinfuitem.gameObject);
         CurYinFuList.RemoveAt(index);
 
-        CheckGenerate();
+        //CheckGenerate();
     }
 
 }

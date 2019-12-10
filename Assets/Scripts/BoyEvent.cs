@@ -14,6 +14,7 @@ public class BoyEvent : MonoBehaviour
         {
             YinFuManager.Instance.CheckGenerate();
             TipUI.Instance.SetActive(true);
+            GameUI.Instance.show();
             count++;
         }
     }

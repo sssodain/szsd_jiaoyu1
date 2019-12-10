@@ -107,7 +107,15 @@ public class ProcessManager : MonoBehaviour
     public void Start_paodai()
     {
         piaodai.gameObject.SetActive(true);
+
+
     }
+
+    public void BoyToPaoDai()
+    {
+        boyroot.SetParent(boytodai);
+    }
+
 
 
 

@@ -68,13 +68,14 @@ public class yinfuitem : MonoBehaviour
         //Debug.LogError("vector3=" + vector3);
         //飘过去
         Vector3 vector3 = YinFuManager.Instance.endpoint.localPosition;
+        GameUI.Instance.Add();
         transform.DOLocalMove(vector3, 10f).OnComplete(delegate ()
         {
             YinFuManager.Instance.DestroyYinFu(this);
         });
 
         //缩小逻辑
-
+        transform.DOScale(Vector3.zero, 12f);
 
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class ProcessManager : MonoBehaviour
 {
@@ -21,6 +23,7 @@ public class ProcessManager : MonoBehaviour
     private Animator piaodaiAnimator;
     public Transform boyroot;
     public Transform boytodai;
+    public Image fadeImag;
     private void Awake()
     {
         Instance = this;
@@ -112,8 +115,7 @@ public class ProcessManager : MonoBehaviour
     public void ResetGame()
     {
         //黑屏逻辑
-
-
+        fadeImag.DOColor(new Color(0,0,0), 1.5f);
         //重新加载场景
         MyStartCoroutine(2f, delegate ()
         {

@@ -7,11 +7,13 @@ public class yinfuitem : MonoBehaviour
 {
     public int yinfuId = 0;
     private float RotationSpeed = 10f;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         RotationSpeed = Random.Range(15, 30);
         if (Random.Range(0, 100) > 50) RotationSpeed *= -1;
+        _audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -60,6 +62,7 @@ public class yinfuitem : MonoBehaviour
     {
         if (!IsCanClick) return;
         IsCanClick = false;
+        _audioSource.Play();
         TipUI.Instance.SetActive(false);
         transform.DOKill();
         //Transform boyTrans = ProcessManager.Instance.boy.transform;

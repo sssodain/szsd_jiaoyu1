@@ -12,9 +12,14 @@ public class ProcessManager : MonoBehaviour
     public Transform boy;
     private Animator boyAnimator;
 
+
     public Transform xuanwo;
     public Transform yinfu_effect;
 
+    public Transform piaodai;
+    private Animator piaodaiAnimator;
+    public Transform boyroot;
+    public Transform boytodai;
     private void Awake()
     {
         Instance = this;
@@ -23,6 +28,7 @@ public class ProcessManager : MonoBehaviour
 
         BookAnimator = book.GetComponent<Animator>();
         boyAnimator = boy.GetComponent<Animator>();
+        piaodaiAnimator = piaodai.GetComponent<Animator>();
     }
 
     private void Start()
@@ -96,6 +102,15 @@ public class ProcessManager : MonoBehaviour
     {
 
     }
+
+
+    public void Start_paodai()
+    {
+        piaodai.gameObject.SetActive(true);
+    }
+
+
+
 
 
     //public void Update()

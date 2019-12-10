@@ -20,6 +20,7 @@ public class GameUI : MonoBehaviour
         if (curCount >= 5)
         {
             curCount = 0;
+            ProcessManager.Instance.Start_paodai();
         }
         text.text = "" + curCount + "/" + 5;
 

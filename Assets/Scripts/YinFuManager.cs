@@ -55,7 +55,7 @@ public class YinFuManager : MonoBehaviour
         {
             for (int i = 0; i < needCount; i++)
             {
-                StartCoroutine(Generate(needCount * 1));
+                StartCoroutine(Generate(i * 1));
             }
         }
     }

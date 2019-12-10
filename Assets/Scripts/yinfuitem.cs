@@ -60,6 +60,7 @@ public class yinfuitem : MonoBehaviour
     {
         if (!IsCanClick) return;
         IsCanClick = false;
+        TipUI.Instance.SetActive(false);
         transform.DOKill();
         //Transform boyTrans = ProcessManager.Instance.boy.transform;
         //Vector3 vector3 = Camera.main.WorldToViewportPoint(boyTrans.position);

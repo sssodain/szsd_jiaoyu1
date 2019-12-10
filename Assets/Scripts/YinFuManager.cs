@@ -95,6 +95,7 @@ public class YinFuManager : MonoBehaviour
 
     public void DestroyYinFu(yinfuitem yinfuitem)
     {
+        GameUI.Instance.Add();
         int index = CurYinFuList.FindIndex(item => item.yinfuId == yinfuitem.yinfuId);
         GameObject.DestroyImmediate(yinfuitem.gameObject);
         CurYinFuList.RemoveAt(index);

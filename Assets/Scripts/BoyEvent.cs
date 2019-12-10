@@ -13,6 +13,7 @@ public class BoyEvent : MonoBehaviour
         if (count == 1)
         {
             YinFuManager.Instance.CheckGenerate();
+            TipUI.Instance.SetActive(true);
             count++;
         }
     }

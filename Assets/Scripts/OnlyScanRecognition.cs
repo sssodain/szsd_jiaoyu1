@@ -15,7 +15,6 @@ public class OnlyScanRecognition : MonoBehaviour, ITrackableEventHandler
 
     protected virtual void Start()
     {
-        VuforiaBehaviour.Instance.OnEnableEvent += onFocus;
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
         if (mTrackableBehaviour)
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
@@ -63,10 +62,5 @@ public class OnlyScanRecognition : MonoBehaviour, ITrackableEventHandler
         GameManager.Instance.SwitchGame(1);
     }
     #endregion // PROTECTED_METHODS
-
-    void onFocus()
-    {
-        CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_CONTINUOUSAUTO);
-    }
 }
 

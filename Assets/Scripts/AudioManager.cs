@@ -94,7 +94,7 @@ public class AudioManager : MonoBehaviour
         audioSource.Play();
     }
     //2D声音
-    private void StopAudio(string AudioName)
+    public void StopAudio(string AudioName)
     {
         for (int i = 0; i < AudioSourceList.Count; i++)
         {
@@ -113,5 +113,5 @@ public class AudioManager : MonoBehaviour
 
 public enum SoundType
 {
-    
+    Bac
 }

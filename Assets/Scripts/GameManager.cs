@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Vuforia;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -11,15 +12,17 @@ public class GameManager : MonoBehaviour
     public Transform ARCam;
     public Transform GameCam;
 
-    public Image ScanLine;
+    public UnityEngine.UI.Image ScanLine;
     private void Awake()
     {
         Instance = this;
+        ARCam.GetComponent<VuforiaBehaviour>().enabled = false;
     }
 
     private void Start()
     {
         SwitchGame(0);
+        ARCam.GetComponent<VuforiaBehaviour>().enabled = true;
     }
 
 
@@ -33,6 +36,8 @@ public class GameManager : MonoBehaviour
         }
         else if (type == 1)
         {
+        
+            AudioManager.Instance.PlayAudio("Background", SoundType.Bac,false, 0.5f);
             ScanLine.gameObject.SetActive(false);
             ARRoot.SetActive(false);
             GameRoot.SetActive(true);

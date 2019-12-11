@@ -20,4 +20,10 @@ public class BoyEvent : MonoBehaviour
             count++;
         }
     }
+
+
+    private void OnEnable()
+    {
+        count = 1;
+    }
 }

@@ -31,6 +31,11 @@ public class GameUI : MonoBehaviour
         _molecule.SetActive(true);
     }
 
+    private void OnEnable()
+    {
+        curCount = 0;
+    }
+
     int curCount = 0;
     public void Add()
     {

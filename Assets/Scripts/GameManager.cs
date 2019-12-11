@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
             ScanLine.gameObject.SetActive(true);
             ARRoot.SetActive(true);
             GameRoot.SetActive(false);
+            ARCam.position = Vector3.zero;
+            ARCam.eulerAngles = Vector3.zero;
         }
         else if (type == 1)
         {

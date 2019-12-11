@@ -27,18 +27,29 @@ public class ProcessManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
-        boy.gameObject.SetActive(false);
-
         BookAnimator = book.GetComponent<Animator>();
         boyAnimator = boy.GetComponent<Animator>();
         piaodaiAnimator = piaodai.GetComponent<Animator>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
+        ChuanSongTXRoot.gameObject.SetActive(false);
+        boy.gameObject.SetActive(false);
+        xuanwo.gameObject.SetActive(false);
+        yinfu_effect.gameObject.SetActive(false);
+        boy.gameObject.SetActive(false);
+        boyroot.SetParent(transform);
+        boyroot.transform.localPosition = Vector3.zero;
+        boyroot.transform.localEulerAngles = Vector3.zero;
+        boyroot.transform.localScale = Vector3.one;
+
+        piaodai.transform.localPosition = new Vector3 (0.48f, 2.65f, 0.09f);
+        piaodai.transform.localEulerAngles = new Vector3(0, 44.189f, 0);
+        piaodai.gameObject.SetActive(false);
         SwitchBookAnim("play");
     }
+
 
     public void MyStartCoroutine(float time, System.Action action)
     {
@@ -116,10 +127,12 @@ public class ProcessManager : MonoBehaviour
     {
         //黑屏逻辑
         fadeImag.DOColor(new Color(0,0,0), 1.5f);
+
         //重新加载场景
         MyStartCoroutine(2f, delegate ()
         {
-            SceneManager.LoadScene("Main");
+            GameManager.Instance.SwitchGame(0);
+            fadeImag.gameObject.SetActive(false);
         });
     }
 

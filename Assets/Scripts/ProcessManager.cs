@@ -116,6 +116,7 @@ public class ProcessManager : MonoBehaviour
     public void Start_paodai()
     {
         piaodai.gameObject.SetActive(true);
+        piaodaiAnimator.SetTrigger("play");
     }
 
     public void BoyToPaoDai()
@@ -126,13 +127,15 @@ public class ProcessManager : MonoBehaviour
     public void ResetGame()
     {
         //黑屏逻辑
-        fadeImag.DOColor(new Color(0,0,0), 1.5f);
+        fadeImag.gameObject.SetActive(true);
+        fadeImag.DOColor(new Color(0,0,0,1), 1.5f);
 
         //重新加载场景
         MyStartCoroutine(2f, delegate ()
         {
             GameManager.Instance.SwitchGame(0);
             fadeImag.gameObject.SetActive(false);
+            fadeImag.DOColor(new Color(0, 0, 0, 0), 0f);
         });
     }
 

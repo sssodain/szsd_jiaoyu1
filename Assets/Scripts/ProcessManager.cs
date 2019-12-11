@@ -137,7 +137,7 @@ public class ProcessManager : MonoBehaviour
             fadeImag.DOColor(new Color(0, 0, 0, 0), 0f);
 
 
-
+            AudioManager.Instance.StopAudio("desolate");
             boyroot.SetParent(transform);
             boyroot.transform.localPosition = Vector3.zero;
             boyroot.transform.localEulerAngles = Vector3.zero;

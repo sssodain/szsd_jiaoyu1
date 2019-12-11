@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public Transform ARCam;
     public Transform GameCam;
+
+    public Canvas ScanLine;
     private void Awake()
     {
         Instance = this;
@@ -25,11 +27,13 @@ public class GameManager : MonoBehaviour
     {
         if (type == 0)
         {
+            ScanLine.gameObject.SetActive(true);
             ARRoot.SetActive(true);
             GameRoot.SetActive(false);
         }
         else if (type == 1)
         {
+            ScanLine.gameObject.SetActive(false);
             ARRoot.SetActive(false);
             GameRoot.SetActive(true);
             ARCam.position = new Vector3(-2.69f,6.88f,0.93f);

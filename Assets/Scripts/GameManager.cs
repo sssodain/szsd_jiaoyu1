@@ -25,9 +25,12 @@ public class GameManager : MonoBehaviour
         ARCam.GetComponent<VuforiaBehaviour>().enabled = true;
     }
 
-
+    private int CurType = -10;
     public void SwitchGame(int type )
     {
+        if (CurType == type) return;
+
+        CurType = type;
         if (type == 0)
         {
             ScanLine.gameObject.SetActive(true);

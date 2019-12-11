@@ -19,8 +19,8 @@ public class ProcessManager : MonoBehaviour
     public Transform xuanwo;
     public Transform yinfu_effect;
 
-    public Transform piaodai;
-    private Animator piaodaiAnimator;
+    public GameObject piaodai_prefab;
+    public GameObject piaodai;
     public Transform boyroot;
     public Transform boytodai;
     public Image fadeImag;
@@ -29,7 +29,6 @@ public class ProcessManager : MonoBehaviour
         Instance = this;
         BookAnimator = book.GetComponent<Animator>();
         boyAnimator = boy.GetComponent<Animator>();
-        piaodaiAnimator = piaodai.GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -39,14 +38,7 @@ public class ProcessManager : MonoBehaviour
         xuanwo.gameObject.SetActive(false);
         yinfu_effect.gameObject.SetActive(false);
         boy.gameObject.SetActive(false);
-        boyroot.SetParent(transform);
-        boyroot.transform.localPosition = Vector3.zero;
-        boyroot.transform.localEulerAngles = Vector3.zero;
-        boyroot.transform.localScale = Vector3.one;
 
-        piaodai.transform.localPosition = new Vector3 (0.48f, 2.65f, 0.09f);
-        piaodai.transform.localEulerAngles = new Vector3(0, 44.189f, 0);
-        piaodai.gameObject.SetActive(false);
         SwitchBookAnim("play");
     }
 
@@ -113,15 +105,22 @@ public class ProcessManager : MonoBehaviour
         }
     }
 
+
     public void Start_paodai()
     {
-        piaodai.gameObject.SetActive(true);
-        piaodaiAnimator.SetTrigger("play");
+        GameObject newgo = GameObject.Instantiate(piaodai_prefab);
+        newgo.transform.SetParent(transform);
+        newgo.transform.localEulerAngles = Vector3.zero;
+        newgo.transform.localPosition = Vector3.zero;
+        newgo.transform.localScale = Vector3.one;
+        piaodai = newgo;
+        
     }
 
     public void BoyToPaoDai()
     {
-        boyroot.SetParent(boytodai);
+        paodaiEvent paodaiEvent = piaodai.GetComponentInChildren<paodaiEvent>();
+        boyroot.SetParent(paodaiEvent.BoyParent);
     }
 
     public void ResetGame()
@@ -136,6 +135,14 @@ public class ProcessManager : MonoBehaviour
             GameManager.Instance.SwitchGame(0);
             fadeImag.gameObject.SetActive(false);
             fadeImag.DOColor(new Color(0, 0, 0, 0), 0f);
+
+
+
+            boyroot.SetParent(transform);
+            boyroot.transform.localPosition = Vector3.zero;
+            boyroot.transform.localEulerAngles = Vector3.zero;
+            boyroot.transform.localScale = Vector3.one;
+            GameObject.Destroy(piaodai);
         });
     }
 

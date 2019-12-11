@@ -56,7 +56,7 @@ public class yinfuitem : MonoBehaviour
         });
     }
 
-
+    float FlySpeed = 150f;
     bool IsCanClick = true;
     public void OnClick()
     {
@@ -70,15 +70,20 @@ public class yinfuitem : MonoBehaviour
         //Debug.LogError("OnClick");
         //Debug.LogError("vector3=" + vector3);
         //飘过去
-        Vector3 vector3 = YinFuManager.Instance.endpoint.localPosition;
-        GameUI.Instance.Add();
-        transform.DOLocalMove(vector3, 10f).OnComplete(delegate ()
+        Vector3 targetPos = YinFuManager.Instance.endpoint.localPosition;
+
+
+        float dis = Vector3.Distance(targetPos, transform.localPosition);
+        float needTime = dis / FlySpeed;
+        transform.DOLocalMove(targetPos, needTime).OnComplete(delegate ()
         {
             YinFuManager.Instance.DestroyYinFu(this);
         });
 
         //缩小逻辑
-        transform.DOScale(Vector3.zero, 12f);
+        float ScaleTime =2f;
+        if (needTime <= ScaleTime) ScaleTime = needTime;
+        transform.DOScale(Vector3.zero, ScaleTime).SetDelay(needTime - ScaleTime);
 
     }
 }

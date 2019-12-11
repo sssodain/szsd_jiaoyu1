@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public Transform ARCam;
     public Transform GameCam;
 
-    public Canvas ScanLine;
+    public Image ScanLine;
     private void Awake()
     {
         Instance = this;
@@ -39,6 +39,10 @@ public class GameManager : MonoBehaviour
             ARCam.position = new Vector3(-2.69f,6.88f,0.93f);
             ARCam.eulerAngles = GameCam.eulerAngles;
         }
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
 

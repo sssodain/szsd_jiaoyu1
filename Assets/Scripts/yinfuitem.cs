@@ -71,7 +71,7 @@ public class yinfuitem : MonoBehaviour
         //Debug.LogError("vector3=" + vector3);
         //飘过去
         Vector3 targetPos = YinFuManager.Instance.endpoint.localPosition;
-        GameUI.Instance.Add();
+
 
         float dis = Vector3.Distance(targetPos, transform.localPosition);
         float needTime = dis / FlySpeed;
